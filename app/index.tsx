@@ -1,11 +1,64 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView, Alert, TouchableOpacity } from "react-native";
+import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
+ 
 export default function HomeScreen() {
-
+  return (
+    <SafeAreaView style={styles.screen} edges={["top"]}>
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+        {/* HEADER */}
+        <Text style={styles.greeting}>Good afternoon</Text>
+ 
+        <View style={styles.grid}>
+          {["Liked Songs", "Top Hits", "Chill Mix", "Daily Mix", "Workout", "Focus"].map((item) => (
+            <View key={item} style={styles.gridItem}>
+              <Text style={styles.gridText}>{item}</Text>
+            </View>
+          ))}
+        </View>
+ 
+        <Text style={styles.sectionTitle}>Recently played</Text>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {["Pop Mix", "Hip Hop", "Indie", "Throwbacks"].map((item) => (
+            <View key={item} style={styles.playlistCard}>
+              <View style={styles.cover} />
+              <Text style={styles.playlistText}>{item}</Text>
+            </View>
+          ))}
+        </ScrollView>
+ 
+        <Text style={styles.sectionTitle}>Made for you</Text>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {["Daily Mix 1", "Daily Mix 2", "Daily Mix 3"].map((item) => (
+            <View key={item} style={styles.playlistCard}>
+              <View style={styles.cover} />
+              <Text style={styles.playlistText}>{item}</Text>
+            </View>
+          ))}
+        </ScrollView>
+ 
+        <Text style={styles.sectionTitle}>Recommended for today</Text>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {["Chill Vibes", "Mood Booster", "Energy"].map((item) => (
+            <View key={item} style={styles.playlistCard}>
+              <View style={styles.cover} />
+              <Text style={styles.playlistText}>{item}</Text>
+            </View>
+          ))}
+        </ScrollView>
+      </ScrollView>
+ 
+      <TouchableOpacity
+        activeOpacity={0.85}
+        style={styles.alertButton}
+        onPress={() => Alert.alert("Alert Button pressed")}
+      >
+        <Text style={styles.alertButtonText}>Alert</Text>
+      </TouchableOpacity>
+    </SafeAreaView>
+  );
 }
-
+ 
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -74,3 +127,5 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 });
+ 
+ 
